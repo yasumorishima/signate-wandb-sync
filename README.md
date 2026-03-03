@@ -47,7 +47,9 @@ Set `WANDB_API_KEY` as a GitHub Secret:
   run: python train.py
 ```
 
-## Usage
+## Commands
+
+<!-- commands:start -->
 
 ### score — Record SIGNATE score to W&B
 
@@ -82,6 +84,8 @@ Updated run: my-run-name (your-entity/your-project/abc123)
 | `--rank` | Leaderboard rank (int) |
 | `--metric KEY=VALUE` | Additional metric (repeatable) |
 | `--project entity/project` | W&B project path (for bare run IDs) |
+
+<!-- commands:end -->
 
 ## Windows
 
