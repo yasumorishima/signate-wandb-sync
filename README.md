@@ -56,7 +56,7 @@ Set `WANDB_API_KEY` as a GitHub Secret:
 Log SIGNATE submission scores to a W&B run.
 
 ```
-signate-wandb-sync score [RUN_ID] [OPTIONS]
+signate-wandb-sync score RUN_ID [OPTIONS]
 ```
 
 | Option | Description |
@@ -72,10 +72,13 @@ signate-wandb-sync score [RUN_ID] [OPTIONS]
 
 ```bash
 # Full W&B URL (recommended - copy from the Actions log)
-signate-wandb-sync score https://wandb.ai/your-entity/your-project/runs/abc123     --score 0.85 --rank 3
+signate-wandb-sync score https://wandb.ai/your-entity/your-project/runs/abc123 \
+    --score 0.85 --rank 3
 
 # With additional metrics
-signate-wandb-sync score https://wandb.ai/your-entity/your-project/runs/abc123     --score 0.85 --rank 3     -m fbeta=0.85 -m recall=0.91
+signate-wandb-sync score https://wandb.ai/your-entity/your-project/runs/abc123 \
+    --score 0.85 --rank 3 \
+    -m fbeta=0.85 -m recall=0.91
 
 # Bare run ID (requires --project)
 signate-wandb-sync score abc123 --project your-entity/your-project --score 0.85
