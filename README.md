@@ -51,39 +51,20 @@ Set `WANDB_API_KEY` as a GitHub Secret:
 
 <!-- commands:start -->
 
-### score — Record SIGNATE score to W&B
+### `signate-wandb-sync score`
 
-```bash
-# Full W&B URL (recommended — copy from Actions log)
-signate-wandb-sync score https://wandb.ai/your-entity/your-project/runs/abc123 \
-    --score 0.85 --rank 3
-
-# With additional metrics
-signate-wandb-sync score https://wandb.ai/your-entity/your-project/runs/abc123 \
-    --score 0.85 --rank 3 \
-    -m fbeta=0.85 -m recall=0.91
-
-# Bare run ID (requires --project)
-signate-wandb-sync score abc123 --project your-entity/your-project --score 0.85
-```
-
-Output:
+Log SIGNATE submission scores to a W&B run.
 
 ```
-Updated run: my-run-name (your-entity/your-project/abc123)
-  submitted = True
-  signate_score = 0.85
-  signate_rank = 3
+signate-wandb-sync score [RUN_ID] [OPTIONS]
 ```
-
-### Options
 
 | Option | Description |
 |---|---|
-| `--score` | SIGNATE submission score (float) |
-| `--rank` | Leaderboard rank (int) |
-| `--metric KEY=VALUE` | Additional metric (repeatable) |
-| `--project entity/project` | W&B project path (for bare run IDs) |
+| `--project`, `-p` | W&B project path (entity/project). Required if RUN_ID is a bare ID. |
+| `--score` | SIGNATE submission score. |
+| `--rank` | Leaderboard rank. |
+| `--metric`, `-m` | Additional metric (can be repeated, e.g. -m f1=0.85 -m auc=0.92). (default: `Sentinel.UNSET`) |
 
 <!-- commands:end -->
 
