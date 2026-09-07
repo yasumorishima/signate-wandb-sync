@@ -64,9 +64,31 @@ signate-wandb-sync score [RUN_ID] [OPTIONS]
 | `--project`, `-p` | W&B project path (entity/project). Required if RUN_ID is a bare ID. |
 | `--score` | SIGNATE submission score. |
 | `--rank` | Leaderboard rank. |
-| `--metric`, `-m` | Additional metric (can be repeated, e.g. -m f1=0.85 -m auc=0.92). (default: `Sentinel.UNSET`) |
+| `--metric`, `-m` | Additional metric (can be repeated, e.g. -m f1=0.85 -m auc=0.92). |
 
 <!-- commands:end -->
+
+### Examples
+
+```bash
+# Full W&B URL (recommended - copy from the Actions log)
+signate-wandb-sync score https://wandb.ai/your-entity/your-project/runs/abc123     --score 0.85 --rank 3
+
+# With additional metrics
+signate-wandb-sync score https://wandb.ai/your-entity/your-project/runs/abc123     --score 0.85 --rank 3     -m fbeta=0.85 -m recall=0.91
+
+# Bare run ID (requires --project)
+signate-wandb-sync score abc123 --project your-entity/your-project --score 0.85
+```
+
+Output:
+
+```
+Updated run: my-run-name (your-entity/your-project/abc123)
+  submitted = True
+  signate_score = 0.85
+  signate_rank = 3
+```
 
 ## Windows
 
